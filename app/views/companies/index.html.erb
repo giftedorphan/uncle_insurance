@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Compañias</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nombre</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @companies.each.with_index(1) do |company, index| %>
+    <tr data-link="<%= company_path(company) %>" class="data-row">
+      <th scope="row"> <%= index %> </th>
+      <td> <%= company.name %> </td>
+      <td> <%= link_to 'Editar', edit_company_path(company) %> </td>
+      <td> <%= link_to 'Eliminar', company, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<div class="col-md-12">
+  <div class="col-md-7 col-md-push-5">
+    <%= will_paginate @companies, :next_label => 'Siguiente', :previous_label => 'Anterior', renderer: BootstrapPagination::Rails %>
+  </div>
+</div>
+
+<div class="col-md-10">
+  <div class="col-md-3 col-md-push-6">
+    <%= link_to 'Agregar Compañia', new_company_path, {class: 'btn btn-primary btn-block'} %>
+  </div>
+</div>

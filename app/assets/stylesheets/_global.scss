@@ -1,0 +1,30 @@
+html,
+body {
+  margin: 0;
+  padding: 5%;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: $primary-font;
+}
+
+.center-div {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+p {
+  text-align: center;
+}

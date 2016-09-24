@@ -1,0 +1,46 @@
+<div class="col-md-10 col-md-push-3">
+  <div class="col-md-12">
+    <div class="col-md-6">
+      <div class="col-md-4">
+        <p class=""> DNI: </p>
+      </div>
+      <div class="col-md-8">
+        <p class=""> <%= @client.dni %>
+      </div>
+    </div>
+  </div>
+
+   <div class="col-md-12">
+    <div class="col-md-6">
+      <div class="col-md-4">
+        <p class=""> NOMBRE: </p>
+      </div>
+      <div class="col-md-8">
+        <p class=""> <%= @client.first_name %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="col-md-6">
+      <div class="col-md-4">
+        <p class=""> APELLIDO: </p>
+      </div>
+      <div class="col-md-8">
+        <p class=""> <%= @client.last_name %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-12">
+  <div class="col-md-5 col-md-push-3">
+    <%= link_to 'Atras', clients_path, {class: 'btn btn-primary btn-block'} %>
+  </div>
+</div>
+
+<div class="col-md-12">
+  <div class="col-md-5 col-md-push-3">
+    <%= link_to 'Listar Polizas', client_insurances_path(client_id: @client.id), {class: 'btn btn-primary btn-block'} %>
+  </div>
+</div>

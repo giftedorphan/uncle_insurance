@@ -1,0 +1,45 @@
+<%= simple_form_for(@client) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="col-md-10 col-md-push-3">
+    <div class="col-md-12">
+      <div class="col-md-6">
+        <div class="col-md-4">
+          <p class=""> DNI: </p>
+        </div>
+        <div class="col-md-8">
+          <%= f.input :dni, as: :string, label: false, :input_html => {:maxlength => 50}, :error => false %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="col-md-6">
+        <div class="col-md-4">
+          <p class=""> NOMBRE: </p>
+        </div>
+        <div class="col-md-8">
+          <%= f.input :first_name, as: :string, label: false, :input_html => {:maxlength => 50}, :error => false %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="col-md-6">
+        <div class="col-md-4">
+          <p class=""> APELLIDO: </p>
+        </div>
+        <div class="col-md-8">
+          <%= f.input :last_name, as: :string, label: false, :input_html => {:maxlength => 50}, :error => false %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="col-md-6 col-md-push-6">
+      <%= f.button :submit, ( f.object.new_record? ? "Crear" : "Actualizar"), {class: 'btn btn-primary btn-block'} %>
+    </div>
+  </div>
+
+<% end %>
