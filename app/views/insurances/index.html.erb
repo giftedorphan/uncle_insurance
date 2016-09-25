@@ -1,23 +1,46 @@
-<p id="notice"><%= notice %></p>
+<h1>Polizas</h1>
 
-<h1>Insurances</h1>
-
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th>#</th>
+      <th>Compañia</th>
+      <th>Enlace</th>
+      <th>Fecha de Compra</th>
+      <th>Fecha de Expiracion</th>
     </tr>
   </thead>
-
   <tbody>
-    <% @insurances.each do |insurance| %>
-      <tr>
-        <td><%= link_to 'Show', insurance %></td>
-        <td><%= link_to 'Edit', edit_insurance_path(insurance) %></td>
-        <td><%= link_to 'Destroy', insurance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% @insurances.each.with_index(1) do |insurance, index| %>
+    <tr data-link="<%= client_insurance_path(insurance.client, insurance) %>" class="data-row">
+      <th scope="row"> <%= index %> </th>
+      <td> <%= insurance.company.name %> </td>
+      <td> <%= insurance.link %> </td>
+      <td> <%= insurance.acquisition.strftime("%d-%m-%Y") %> </td>
+      <td> <%= insurance.due_date.strftime("%d-%m-%Y") %> </td>
+      <td> <%= link_to 'Editar', edit_client_insurance_path(insurance.client, insurance), :class => 'btn btn-success btn-sm' %> </td>
+      <td> <%= link_to 'Eliminar', client_insurance_path(insurance.client, insurance), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger btn-sm' %> </td>
+    </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+
+<div class="col-md-12">
+  <div class="col-md-7 col-md-push-5">
+    <%= will_paginate @insurances, :next_label => 'Siguiente', :previous_label => 'Anterior', renderer: BootstrapPagination::Rails %>
+  </div>
+</div>
+
+<div class="col-md-6">
+  <div class="col-md-6 col-md-push-6">
+    <%= link_to 'Atras', client_path(@current_client), {class: 'btn btn-primary btn-block'} %>
+  </div>
+</div>
+
+<div class="col-md-6">
+  <div class="col-md-6 col-md-push-1">
+    <%= link_to 'Agregar Poliza', new_client_insurance_path, {class: 'btn btn-primary btn-block'} %>
+  </div>
+</div>

@@ -1,17 +1,55 @@
-<%= form_for(insurance) do |f| %>
-  <% if insurance.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(insurance.errors.count, "error") %> prohibited this insurance from being saved:</h2>
+<%= simple_form_for([@insurance.client, @insurance]) do |f| %>
 
-      <ul>
-      <% insurance.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class="col-md-10 col-md-push-3">
+    <div class="col-md-12">
+      <div class="col-md-6">
+        <div class="col-md-4">
+          <p class=""> Enlace: </p>
+        </div>
+        <div class="col-md-8">
+          <%= f.input :company_id, collection: Company.order(:name), prompt: "Choose a Company", label: false, :input_html => {:maxlength => 50}, :error => false %>
+        </div>
+      </div>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
+    <div class="col-md-12">
+      <div class="col-md-6">
+        <div class="col-md-4">
+          <p class=""> Enlace: </p>
+        </div>
+        <div class="col-md-8">
+          <%= f.input :link, as: :string, label: false, :input_html => {:maxlength => 50}, :error => false %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="col-md-6">
+        <div class="col-md-4">
+          <p class=""> Fecha de Compra: </p>
+        </div>
+        <div class="col-md-8">
+          <%= f.input :acquisition, as: :date, start_year: Date.today.year - 50, order: [:day, :month, :year], label: false, :input_html => {:maxlength => 50}, :error => false %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="col-md-6">
+        <div class="col-md-4">
+          <p class=""> Fecha de Expiracion: </p>
+        </div>
+        <div class="col-md-8">
+          <%= f.input :due_date, as: :date, start_year: Date.today.year - 50, order: [:day, :month, :year], label: false, :input_html => {:maxlength => 50}, :error => false %>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <div class="col-md-6 pull-right">
+    <div class="col-md-6 col-md-push-1">
+      <%= f.button :submit, ( f.object.new_record? ? "Crear" : "Actualizar"), {class: 'btn btn-primary btn-block'} %>
+    </div>
+  </div>
+
 <% end %>
