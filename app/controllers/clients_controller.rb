@@ -54,7 +54,7 @@ class ClientsController < BaseController
 
   private
     def set_client
-      @client = Client.find(params[:id])
+      @client = Client.friendly.find(params[:id])
     end
 
     def client_params

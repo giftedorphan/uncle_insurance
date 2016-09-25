@@ -2,6 +2,6 @@ class BaseController < ApplicationController
   before_action :authenticate_user!
 
   def current_client
-    Client.find params[:client_id]
+    @current_client = Client.friendly.find params[:client_id]
   end
 end

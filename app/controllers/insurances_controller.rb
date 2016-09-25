@@ -29,7 +29,7 @@ class InsurancesController < BaseController
       flash[:error] = "Su solicitud no pudo ser procesada."
     end
 
-    respond_with @insurance
+    respond_with @insurance, location: client_insurances_path(current_client)
   end
 
   def update
@@ -39,7 +39,7 @@ class InsurancesController < BaseController
       flash[:error] = "Su solicitud no pudo ser procesada."
     end
 
-    respond_with @insurance
+    respond_with @insurance, location: client_insurances_path(current_client)
   end
 
   def destroy
@@ -49,15 +49,15 @@ class InsurancesController < BaseController
       flash[:error] = "Su solicitud no pudo ser procesada."
     end
 
-    respond_with @insurance
+    respond_with @insurance, location: client_insurances_path(current_client)
   end
 
   private
     def set_insurance
-      @insurance = current_client.insurances.find(params[:id])
+      @insurance = current_client.insurances.friendly.find(params[:id])
     end
 
     def insurance_params
-      params.fetch(:insurance, {}).permit(:client_id, :company_id, :link, :acquisition, :due_date)
+      params.fetch(:insurance, {}).permit(:company_id, :link, :acquisition, :due_date)
     end
 end
