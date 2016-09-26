@@ -10,9 +10,19 @@
       <ul class="nav navbar-nav">
         <li><%= link_to 'Clientes', clients_path%></li>
       </ul>
+
       <ul class="nav navbar-nav">
         <li><%= link_to 'Compañias', companies_path%></li>
       </ul>
+
+      <div class="col-md-6 col-md-push-3">
+        <%= form_tag insurances_path, method: :get, :class=> 'navbar-form' do %>
+          <%= select_month nil, {prompt: 'Mes'} %>
+          <%= select_year nil, {prompt: 'Año', :start_year => Date.today.year - 50} %>
+          <%= submit_tag "Buscar Poliza", :name => nil %>
+        <% end %>
+      </div>
+
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= current_user.email %>
@@ -25,6 +35,7 @@
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->
+
   </div><!-- /.container-fluid -->
 </nav>
 <% end %>
