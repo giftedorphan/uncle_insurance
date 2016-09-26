@@ -3,7 +3,12 @@ class InsurancesController < BaseController
   respond_to :html, :json
 
   def index
-    @insurances = current_client.insurances.paginate(:page => params[:page], :per_page => 10)
+    if params[:date]
+      @insurances = Insurance.search(params[:date]).order("acquisition DESC").paginate(:page => params[:page], :per_page => 10)
+    else
+      @insurances = current_client.insurances.paginate(:page => params[:page], :per_page => 10)
+    end
+
     respond_with @insurances
   end
 

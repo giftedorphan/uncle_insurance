@@ -16,4 +16,14 @@ class Insurance < BaseRecord
   def should_generate_new_friendly_id?
     company_id_changed?
   end
+
+  def self.search(date)
+    if date[:month].empty?
+      where('extract(year from acquisition) = ?', date[:year])
+    elsif date[:year].empty?
+      where('extract(month from acquisition) = ?', date[:month])
+    else
+      where('extract(year from acquisition) = ? AND extract(month from acquisition) = ?', date[:year], date[:month])
+    end
+  end
 end

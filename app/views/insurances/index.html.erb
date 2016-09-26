@@ -35,12 +35,18 @@
 
 <div class="col-md-6">
   <div class="col-md-6 col-md-push-6">
-    <%= link_to 'Atras', client_path(@current_client), {class: 'btn btn-primary btn-block'} %>
+    <%=
+      link_to_if(@current_client.nil?, 'Atras', root_path, {class: 'btn btn-primary btn-block'}) do
+        link_to 'Atras', client_path(@current_client), {class: 'btn btn-primary btn-block'}
+      end
+    %>
   </div>
 </div>
 
-<div class="col-md-6">
-  <div class="col-md-6 col-md-push-1">
-    <%= link_to 'Agregar Poliza', new_client_insurance_path, {class: 'btn btn-primary btn-block'} %>
+<% if @current_client %>
+  <div class="col-md-6">
+    <div class="col-md-6 col-md-push-1">
+      <%= link_to 'Agregar Poliza', new_client_insurance_path, {class: 'btn btn-primary btn-block'} %>
+    </div>
   </div>
-</div>
+<% end %>
