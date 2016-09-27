@@ -16,6 +16,6 @@ class Client < BaseRecord
   end
 
   def should_generate_new_friendly_id?
-    first_name_changed? || last_name_changed?
+    first_name_changed? || last_name_changed? || dni_changed?
   end
 end
