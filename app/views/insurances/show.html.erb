@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <div class="col-md-6">
       <div class="col-md-5">
-        <p class=""> Compañia: </p>
+        <p class="title"> Compañia: </p>
       </div>
       <div class="col-md-7">
         <p class=""> <%= @insurance.company.name %> </p>
@@ -13,7 +13,7 @@
    <div class="col-md-12">
     <div class="col-md-6">
       <div class="col-md-5">
-        <p class=""> Enlace: </p>
+        <p class="title"> Enlace: </p>
       </div>
       <div class="col-md-7">
         <p class=""> <%= @insurance.link %> </p>
@@ -24,7 +24,24 @@
   <div class="col-md-12">
     <div class="col-md-6">
       <div class="col-md-5">
-        <p class=""> Fecha de Compra: </p>
+        <p class="title"> Pago: </p>
+      </div>
+      <div class="col-md-7">
+        <p class="">
+          <% if @insurance.payment %>
+            Completado
+          <% else %>
+            Pendiente
+          <% end %>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="col-md-6">
+      <div class="col-md-5">
+        <p class="title"> Fecha de Compra: </p>
       </div>
       <div class="col-md-7">
         <p class=""> <%= @insurance.acquisition.strftime("%d-%m-%Y") %> </p>
@@ -35,10 +52,26 @@
   <div class="col-md-12">
     <div class="col-md-6">
       <div class="col-md-5">
-        <p class="">Fecha de Expiracion:</p>
+        <p class="title"> Fecha de Expiracion: </p>
       </div>
       <div class="col-md-7">
         <p class=""> <%= @insurance.due_date.strftime("%d-%m-%Y") %> </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="col-md-6">
+      <div class="col-md-5">
+        <p class="title"> Observaciones: </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="col-md-7">
+      <div class="col-md-12">
+        <p class=""> <%= @insurance.comments %> </p>
       </div>
     </div>
   </div>

@@ -4,7 +4,9 @@
   <thead>
     <tr>
       <th>#</th>
+      <th>Cliente</th>
       <th>Compañia</th>
+      <th>Pago</th>
       <th>Enlace</th>
       <th>Fecha de Compra</th>
       <th>Fecha de Expiracion</th>
@@ -14,8 +16,20 @@
     <% @insurances.each.with_index(1) do |insurance, index| %>
     <tr data-link="<%= client_insurance_path(insurance.client, insurance) %>" class="data-row">
       <th scope="row"> <%= index %> </th>
-      <td> <%= insurance.company.name %> </td>
-      <td> <%= insurance.link %> </td>
+      <td> <%= insurance.client.fullname %> </td>
+      <td><%= insurance.company.name %> </td>
+      <td>
+        <% if insurance.payment %>
+          Completado
+        <% else %>
+          Pendiente
+        <% end %>
+      </td>
+      <td>
+        <% unless insurance.link.empty? %>
+          <%= link_to "Ver Poliza", insurance.link, :target => '_blank' %>
+        <% end %>
+      </td>
       <td> <%= insurance.acquisition.strftime("%d-%m-%Y") %> </td>
       <td> <%= insurance.due_date.strftime("%d-%m-%Y") %> </td>
       <td> <%= link_to 'Editar', edit_client_insurance_path(insurance.client, insurance), :class => 'btn btn-success btn-sm' %> </td>

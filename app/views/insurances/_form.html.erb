@@ -4,7 +4,7 @@
     <div class="col-md-12">
       <div class="col-md-6">
         <div class="col-md-4">
-          <p class=""> Enlace: </p>
+          <p class="title"> Compañia: </p>
         </div>
         <div class="col-md-8">
           <%= f.input :company_id, collection: Company.order(:name), prompt: "Choose a Company", label: false, :input_html => {:maxlength => 50}, :error => false %>
@@ -15,7 +15,7 @@
     <div class="col-md-12">
       <div class="col-md-6">
         <div class="col-md-4">
-          <p class=""> Enlace: </p>
+          <p class="title"> Enlace: </p>
         </div>
         <div class="col-md-8">
           <%= f.input :link, as: :string, label: false, :input_html => {:maxlength => 50}, :error => false %>
@@ -26,7 +26,18 @@
     <div class="col-md-12">
       <div class="col-md-6">
         <div class="col-md-4">
-          <p class=""> Fecha de Compra: </p>
+          <p class="title"> Pago: </p>
+        </div>
+        <div class="col-md-8">
+          <%= f.input :payment, as: :boolean, label: false, :error => false %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="col-md-6">
+        <div class="col-md-4">
+          <p class="title"> Fecha de Compra: </p>
         </div>
         <div class="col-md-8">
           <%= f.input :acquisition, as: :date, start_year: Date.today.year - 50, order: [:day, :month, :year], label: false, :input_html => {:maxlength => 50}, :error => false %>
@@ -37,10 +48,21 @@
     <div class="col-md-12">
       <div class="col-md-6">
         <div class="col-md-4">
-          <p class=""> Fecha de Expiracion: </p>
+          <p class="title"> Fecha de Expiracion: </p>
         </div>
         <div class="col-md-8">
           <%= f.input :due_date, as: :date, start_year: Date.today.year - 50, order: [:day, :month, :year], label: false, :input_html => {:maxlength => 50}, :error => false %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="col-md-6">
+        <div class="col-md-4">
+          <p class="title"> Observaciones: </p>
+        </div>
+        <div class="col-md-8">
+          <%= f.input :comments, as: :text, label: false, :input_html => {:maxlength => 250}, :error => false %>
         </div>
       </div>
     </div>
