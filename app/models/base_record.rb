@@ -6,7 +6,7 @@ class BaseRecord < ApplicationRecord
   private
     def upcase_fields
       self.attributes.each { |k, v|
-        if v.is_a? String
+        if (v.is_a? String) && (k != 'link')
           self[k] = v.upcase
         end
       }
