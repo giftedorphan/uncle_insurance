@@ -12,11 +12,11 @@ class Insurance < BaseRecord
   end
 
   def self.search(date)
-    if date[:month].empty? && date[:year].empty?
+    if date[:month].blank? && date[:year].blank?
       all
-    elsif date[:month].empty?
+    elsif date[:month].blank?
       where('extract(year from acquisition) = ?', date[:year])
-    elsif date[:year].empty?
+    elsif date[:year].blank?
       where('extract(month from acquisition) = ?', date[:month])
     else
       where('extract(year from acquisition) = ? AND extract(month from acquisition) = ?', date[:year], date[:month])
