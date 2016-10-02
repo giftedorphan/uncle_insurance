@@ -26,6 +26,10 @@ gem 'simple_form'
 #User authentication
 gem 'devise'
 
+gem 'pdfkit'
+
+gem 'wkhtmltopdf-binary'
+
 gem 'friendly_id', '~> 5.1.0'
 
 group :development, :test do
