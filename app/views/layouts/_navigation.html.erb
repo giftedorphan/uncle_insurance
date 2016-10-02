@@ -19,7 +19,7 @@
         <%= form_tag insurances_path, method: :get, :class=> 'navbar-form' do %>
           <%= select_month nil, {prompt: 'Mes'} %>
           <%= select_year nil, {prompt: 'Año', :start_year => Date.today.year - 50} %>
-          <%= submit_tag "Buscar Poliza", :name => nil %>
+          <%= submit_tag "Buscar Poliza" %>
         <% end %>
       </div>
 
