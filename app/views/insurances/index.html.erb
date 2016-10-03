@@ -77,8 +77,15 @@
 
     <div class="col-md-6">
       <div class="col-md-6 col-md-push-2">
-        <%= link_to 'Generar PDF', insurances_path(:date => {:month => params[:date][:month]}, :year => params[:date][:year], page: params[:page], :format => "pdf"), {class: 'btn btn-primary btn-block'} %>
+        <%= link_to 'Generar PDF (Pagina actual)', insurances_path(:date => {:month => params[:date][:month]}, :year => params[:date][:year], page: params[:page], :format => "pdf"), {class: 'btn btn-primary btn-block'} %>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="col-md-3 col-md-push-4">
+        <%= link_to 'Generar PDF (Todas las paginas)', insurances_path(:date => {:month => params[:date][:month]}, :year => params[:date][:year], page: params[:page], per_page: @insurances.count, :format => "pdf"), {class: 'btn btn-primary btn-block'} %>
       </div>
     </div>
   </div>
 <% end %>
+
