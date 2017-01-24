@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160927020109) do
+ActiveRecord::Schema.define(version: 20170124045509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,7 +59,9 @@ ActiveRecord::Schema.define(version: 20160927020109) do
     t.string   "slug"
     t.boolean  "payment"
     t.text     "comments"
+    t.boolean  "renovation"
     t.index ["payment"], name: "index_insurances_on_payment", using: :btree
+    t.index ["renovation"], name: "index_insurances_on_renovation", using: :btree
     t.index ["slug"], name: "index_insurances_on_slug", unique: true, using: :btree
   end
 

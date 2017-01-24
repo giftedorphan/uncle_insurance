@@ -63,6 +63,6 @@ class InsurancesController < BaseController
     end
 
     def insurance_params
-      params.fetch(:insurance, {}).permit(:company_id, :link, :payment, :comments, :acquisition, :due_date)
+      params.fetch(:insurance, {}).permit(:company_id, :link, :renovation, :payment, :comments, :acquisition, :due_date)
     end
 end
