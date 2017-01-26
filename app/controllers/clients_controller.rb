@@ -3,7 +3,13 @@ class ClientsController < BaseController
   respond_to :html, :json
 
   def index
-    @clients = Client.all.order(first_name: :asc).paginate(:page => params[:page], :per_page => 10)
+    if params[:dni]
+      @clients = Client.search_dni(params[:dni]).order(first_name: :asc).paginate(
+                        :page => params[:page], :per_page => 10)
+    else
+      @clients = Client.all.order(first_name: :asc).paginate(:page => params[:page], :per_page => 10)
+    end
+
     respond_with @clients
   end
 
