@@ -21,11 +21,20 @@
       </ul>
 
       <div class="col-md-6 col-md-push-3">
-        <%= form_tag insurances_path, method: :get, :class=> 'navbar-form' do %>
-          <%= select_month nil, {prompt: 'Mes'} %>
-          <%= select_year nil, {prompt: 'Año', :start_year => Date.today.year - 50} %>
-          <%= submit_tag "Buscar Poliza" %>
-        <% end %>
+        <div class="col-md-1">
+          <select class="spacetop" name="selectSearch" id="selectSearch">
+            <option value="Client"> Clientes </option>
+            <option value="Insurance" selected="selected"> Polizas </option>
+          </select>
+        </div>
+        <div class="col-md-8">
+          <%= form_tag insurances_path, method: :get, :id => 'searchForm', :class => 'navbar-form' do %>
+            <input id="dni" name="dni" type="text" placeholder="DNI" />
+            <%= select_month nil, {prompt: 'Mes'} %>
+            <%= select_year nil, {prompt: 'Año', :start_year => Date.today.year - 3, :end_year => Date.today.year + 1} %>
+            <%= submit_tag "Buscar" %>
+          <% end %>
+        </div>
       </div>
 
       <ul class="nav navbar-nav navbar-right">
