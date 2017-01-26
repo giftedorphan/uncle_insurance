@@ -4,9 +4,12 @@ class InsurancesController < BaseController
 
   def index
     if params[:date]
-      @insurances = Insurance.search(params[:date]).joins(:client).merge(Client.order(first_name: :asc)).paginate(:page => params[:page], :per_page => params[:per_page] || 10)
+      @insurances = Insurance.search_date(params[:date]).joins(:client).merge(
+                              Client.order(first_name: :asc)).search_dni(params[:dni]).paginate(
+                                :page => params[:page], :per_page => params[:per_page] || 10)
     else
-      @insurances = current_client.insurances.joins(:client).merge(Client.order(first_name: :asc)).paginate(:page => params[:page], :per_page => 10)
+      @insurances = current_client.insurances.joins(:client).merge(
+                              Client.order(first_name: :asc)).paginate(:page => params[:page], :per_page => 10)
     end
 
     respond_with @insurances
