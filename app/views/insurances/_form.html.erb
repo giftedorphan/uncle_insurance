@@ -7,7 +7,7 @@
           <p class="title"> Compañia: </p>
         </div>
         <div class="col-md-8">
-          <%= f.input :company_id, collection: Company.order(:name), prompt: "Choose a Company", label: false, :input_html => {:maxlength => 50}, :error => false %>
+          <%= f.input :company_id, collection: Company.order(:name), prompt: "Choose a Company", label: false, :input_html => {:maxlength => 50, :class => "voidInsurance"}, :error => false %>
         </div>
       </div>
     </div>
@@ -18,7 +18,7 @@
           <p class="title"> Enlace: </p>
         </div>
         <div class="col-md-8">
-          <%= f.input :link, as: :string, label: false, :error => false %>
+          <%= f.input :link, as: :string, label: false, :error => false, :input_html => { :class => "voidInsurance" } %>
         </div>
       </div>
     </div>
@@ -26,7 +26,7 @@
     <div class="col-md-12">
       <div class="col-md-6">
         <div class="col-md-4">
-          <p class="title"> Renovacion: </p>
+          <p class="title"> Anulada: </p>
         </div>
         <div class="col-md-8">
           <%= f.input :renovation, as: :boolean, label: false, :error => false %>
@@ -40,7 +40,7 @@
           <p class="title"> Pago: </p>
         </div>
         <div class="col-md-8">
-          <%= f.input :payment, as: :boolean, label: false, :error => false %>
+          <%= f.input :payment, as: :boolean, label: false, :error => false, :input_html => { :class => "voidInsurance" } %>
         </div>
       </div>
     </div>
@@ -51,7 +51,7 @@
           <p class="title"> Fecha de Compra: </p>
         </div>
         <div class="col-md-8">
-          <%= f.input :acquisition, as: :date, start_year: Date.today.year - 50, order: [:day, :month, :year], label: false, :input_html => {:maxlength => 50}, :error => false %>
+          <%= f.input :acquisition, as: :date, :start_year => Date.today.year - 3, :end_year => Date.today.year + 1, order: [:day, :month, :year], label: false, :input_html => {:maxlength => 50}, :error => false, :input_html => { :class => "voidInsurance" } %>
         </div>
       </div>
     </div>
@@ -62,7 +62,7 @@
           <p class="title"> Fecha de Expiracion: </p>
         </div>
         <div class="col-md-8">
-          <%= f.input :due_date, as: :date, start_year: Date.today.year - 50, order: [:day, :month, :year], label: false, :input_html => {:maxlength => 50}, :error => false %>
+          <%= f.input :due_date, as: :date, :start_year => Date.today.year - 3, :end_year => Date.today.year + 1, order: [:day, :month, :year], label: false, :input_html => {:maxlength => 50}, :error => false, :input_html => { :class => "voidInsurance" } %>
         </div>
       </div>
     </div>
@@ -73,7 +73,7 @@
           <p class="title"> Observaciones: </p>
         </div>
         <div class="col-md-8">
-          <%= f.input :comments, as: :text, label: false, :error => false %>
+          <%= f.input :comments, as: :text, label: false, :error => false, :input_html => { :class => "voidInsurance" } %>
         </div>
       </div>
     </div>
