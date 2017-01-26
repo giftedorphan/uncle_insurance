@@ -11,7 +11,7 @@ class Insurance < BaseRecord
     "Poliza-" + SecureRandom.hex(3)
   end
 
-  def self.search(date)
+  def self.search_date(date)
     if date[:month].blank? && date[:year].blank?
       all
     elsif date[:month].blank?
