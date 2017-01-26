@@ -15,4 +15,6 @@
 //= require turbolinks
 //= require bootstrap
 //= require table_tr_click
+//= require selectSearch
+//= require voidInsurance
 //= require_tree .
